@@ -4,7 +4,7 @@
 
 Async-context-friendly request/SSR context primitives for aihu.
 
-Part of the **runtime core** layer of the Aihu meta-framework. Shipped to the client; sized via `bun run size`. The runtime core is dep-free and stacks under `@aihu/runtime` → `@aihu/router` → `@aihu/server` → `@aihu/app`.
+Part of the **runtime core** layer of the Aihu meta-framework. It is shipped to the client as a zero-dependency package and is used by the router, server, and data plugin packages.
 
 <!-- BEGIN_HANDWRITTEN: prose -->
 _(Hand-written prose lives in this block. Replace this placeholder; everything below is auto-generated.)_
@@ -21,7 +21,7 @@ npm install @aihu/context
 bun add @aihu/context
 ```
 
-<sub><i>Auto-generated against `@aihu/context@0.2.0`.</i></sub>
+<sub><i>Auto-generated against `@aihu/context@0.2.1`.</i></sub>
 
 <!-- END_AUTOGEN: install -->
 
@@ -32,13 +32,13 @@ bun add @aihu/context
 
 | | |
 |---|---|
-| **Version** | `0.2.0` |
+| **Version** | `0.2.1` |
 | **Tier** | A — Reactive runtime core — async-context request primitives |
 | **Bundle size** | 420 B (gz) — limit 450 B |
 | **Published files** | 3 entries |
 | **License** | MIT |
 
-<sub><i>Auto-generated against `@aihu/context@0.2.0`.</i></sub>
+<sub><i>Auto-generated against `@aihu/context@0.2.1`.</i></sub>
 
 <!-- END_AUTOGEN: stats -->
 
@@ -52,7 +52,7 @@ bun add @aihu/context
 | `.` | `./dist/index.js` | `—` |
 | `./ssr` | `./dist/ssr.js` | `—` |
 
-<sub><i>Auto-generated against `@aihu/context@0.2.0`.</i></sub>
+<sub><i>Auto-generated against `@aihu/context@0.2.1`.</i></sub>
 
 <!-- END_AUTOGEN: exports -->
 
@@ -61,9 +61,9 @@ bun add @aihu/context
 <!-- BEGIN_AUTOGEN: deps -->
 <!-- regenerate: bun scripts/sync-readme.ts (also runs in pre-commit + CI) -->
 
-_Zero runtime dependencies_ (per the [dep-free thesis](../../README.md#project-posture))_._
+_Zero runtime dependencies._
 
-<sub><i>Auto-generated against `@aihu/context@0.2.0`.</i></sub>
+<sub><i>Auto-generated against `@aihu/context@0.2.1`.</i></sub>
 
 <!-- END_AUTOGEN: deps -->
 
@@ -72,11 +72,11 @@ _Zero runtime dependencies_ (per the [dep-free thesis](../../README.md#project-p
 <!-- BEGIN_AUTOGEN: see-also -->
 <!-- regenerate: bun scripts/sync-readme.ts (also runs in pre-commit + CI) -->
 
-- [@aihu-plugin/data](../plugin-data)
-- [@aihu/server](../server)
-- [Aihu framework root](../../README.md)
+- [@aihu-plugin/data](https://www.npmjs.com/package/@aihu-plugin/data)
+- [@aihu/server](https://github.com/aihu-project/aihu-server)
+- [Aihu documentation](https://aihu.dev)
 
-<sub><i>Auto-generated against `@aihu/context@0.2.0`.</i></sub>
+<sub><i>Auto-generated against `@aihu/context@0.2.1`.</i></sub>
 
 <!-- END_AUTOGEN: see-also -->
 
@@ -85,8 +85,8 @@ _Zero runtime dependencies_ (per the [dep-free thesis](../../README.md#project-p
 <!-- BEGIN_AUTOGEN: license -->
 <!-- regenerate: bun scripts/sync-readme.ts (also runs in pre-commit + CI) -->
 
-MIT — see [LICENSE](../../LICENSE).
+MIT — see [LICENSE](LICENSE).
 
-<sub><i>Auto-generated against `@aihu/context@0.2.0`.</i></sub>
+<sub><i>Auto-generated against `@aihu/context@0.2.1`.</i></sub>
 
 <!-- END_AUTOGEN: license -->

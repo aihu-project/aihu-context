@@ -1,0 +1,16 @@
+{
+  "only": ["ts", "json", "md", "yml", "yaml"],
+  "exclude": ["node_modules", "dist", "coverage"],
+  "depth": 5,
+  "routing": {
+    "subsystems": [
+      {
+        "name": "context-api",
+        "paths": ["src/index.ts", "src/ssr.ts", "tests/context.test.ts"],
+        "keywords": ["createContext", "contextKey", "provide", "inject", "runWithContext"],
+        "docs": ["README.md", "llms.txt"],
+        "note": "The public index, SSR re-export, and tests form one compatibility contract. Keep the SSR entry free of extra runtime imports."
+      }
+    ]
+  }
+}

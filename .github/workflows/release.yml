@@ -1,0 +1,65 @@
+name: Publish context
+
+on:
+  push:
+    tags:
+      - 'context-v*'
+
+permissions:
+  contents: read
+
+env:
+  NPM_REGISTRY: https://registry.npmjs.org
+
+jobs:
+  verify:
+    name: Verify release manifest
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: ${{ env.NPM_REGISTRY }}
+      - run: bun install --frozen-lockfile
+      - run: bun run check:release-version
+        env:
+          RELEASE_TAG: ${{ github.ref_name }}
+      - run: bun run check:ci
+
+  publish:
+    name: Publish @aihu/context
+    needs: verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: ${{ env.NPM_REGISTRY }}
+      - run: bun install --frozen-lockfile
+      - name: Publish exact version if needed
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          set -euo pipefail
+          package="$(node -p "require('./package.json').name")"
+          version="$(node -p "require('./package.json').version")"
+          if npm view "$package@$version" version --registry "$NPM_REGISTRY" >/dev/null 2>&1; then
+            echo "$package@$version already exists; keeping the release idempotent"
+          else
+            npm publish . --access public --registry "$NPM_REGISTRY"
+          fi

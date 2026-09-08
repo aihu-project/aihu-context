@@ -1,5 +1,13 @@
 # @aihu/context
 
+## 0.2.1
+
+### Patch Changes
+
+- Moved the package into the standalone `aihu-project/aihu-context` repository
+  while preserving its public API and package name.
+- Updated package metadata and release automation for the Aihu organization.
+
 ## 0.2.0
 
 ### Minor Changes

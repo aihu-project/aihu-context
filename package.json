@@ -1,0 +1,59 @@
+{
+  "name": "@aihu/context",
+  "version": "0.2.1",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./ssr": {
+      "import": "./dist/ssr.js",
+      "types": "./dist/ssr.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "rolldown -c",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "lint": "biome lint .",
+    "check:lint": "biome ci .",
+    "check:package": "bun scripts/check-package-manifest.ts",
+    "check:release-version": "bun scripts/check-release-version.ts",
+    "check:ci": "bun run check:lint && bun run typecheck && bun run test && bun run build && bun run check:package && bun pm pack --dry-run",
+    "prepublishOnly": "bun run build"
+  },
+  "engines": {
+    "bun": ">=1.3.0",
+    "node": ">=20.18.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.4.14",
+    "@types/node": "^20.16.5",
+    "bun-types": "^1.3.0",
+    "rolldown": "^1.0.0-rc.17",
+    "rolldown-plugin-dts": "^0.23.2",
+    "typescript": "^5.6.2",
+    "vitest": "^3.2.6"
+  },
+  "description": "Async-context-friendly request/SSR context primitives for aihu.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aihu-project/aihu-context.git"
+  },
+  "homepage": "https://github.com/aihu-project/aihu-context#readme",
+  "bugs": "https://github.com/aihu-project/aihu-context/issues",
+  "publishConfig": {
+    "access": "public"
+  }
+}
