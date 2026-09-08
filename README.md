@@ -4,10 +4,10 @@
 
 Async-context-friendly request/SSR context primitives for aihu.
 
-Part of the **runtime core** layer of the Aihu meta-framework. It is shipped to the client as a zero-dependency package and is used by the router, server, and data plugin packages.
+Part of the **runtime core** layer of the Aihu meta-framework. It is DOM-free and has no runtime dependencies, so it can be used by both browser and server code.
 
 <!-- BEGIN_HANDWRITTEN: prose -->
-_(Hand-written prose lives in this block. Replace this placeholder; everything below is auto-generated.)_
+The package exposes typed context tokens, hierarchical client scopes, and an explicit flat map for server rendering. The `./ssr` subpath is a live re-export of the same implementation, so server consumers can depend on the narrow entry point without losing behavior.
 <!-- END_HANDWRITTEN: prose -->
 
 ## Install
@@ -72,9 +72,9 @@ _Zero runtime dependencies._
 <!-- BEGIN_AUTOGEN: see-also -->
 <!-- regenerate: bun scripts/sync-readme.ts (also runs in pre-commit + CI) -->
 
-- [@aihu-plugin/data](https://www.npmjs.com/package/@aihu-plugin/data)
-- [@aihu/server](https://github.com/aihu-project/aihu-server)
-- [Aihu documentation](https://aihu.dev)
+- [@aihu/router](https://github.com/aihu-project/aihu-router)
+- [@aihu/runtime](https://github.com/aihu-project/aihu-runtime)
+- [Aihu framework](https://github.com/aihu-project/aihu)
 
 <sub><i>Auto-generated against `@aihu/context@0.2.1`.</i></sub>
 

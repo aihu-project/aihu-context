@@ -1,8 +1,7 @@
 node_modules/
 dist/
 coverage/
-*.log
-*.tsbuildinfo
+.release/
 .DS_Store
 .codemap/*
 !.codemap/config.json

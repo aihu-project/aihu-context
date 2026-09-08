@@ -1,15 +1,15 @@
 {
-  "only": ["ts", "json", "md", "yml", "yaml"],
-  "exclude": ["node_modules", "dist", "coverage"],
-  "depth": 5,
+  "only": ["ts", "json", "md", "yml"],
+  "exclude": ["dist", "coverage", "node_modules", ".release"],
+  "depth": 4,
   "routing": {
     "subsystems": [
       {
-        "name": "context-api",
-        "paths": ["src/index.ts", "src/ssr.ts", "tests/context.test.ts"],
-        "keywords": ["createContext", "contextKey", "provide", "inject", "runWithContext"],
-        "docs": ["README.md", "llms.txt"],
-        "note": "The public index, SSR re-export, and tests form one compatibility contract. Keep the SSR entry free of extra runtime imports."
+        "name": "context-scope-contract",
+        "paths": ["src/index.ts", "src/ssr.ts", "tests/"],
+        "keywords": ["ContextToken", "runWithContext", "setSsrContextMap", "_enterContext"],
+        "docs": ["README.md"],
+        "note": "The client prototype-chain scope and flat SSR map are two implementations of the same public provide/inject contract; the SSR subpath is a re-export seam that must remain behaviorally live."
       }
     ]
   }

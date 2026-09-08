@@ -1,0 +1,10 @@
+[
+  "dist/index.d.ts",
+  "dist/index.js",
+  "dist/index.js.map",
+  "dist/ssr.d.ts",
+  "dist/ssr.js",
+  "LICENSE",
+  "README.md",
+  "package.json"
+]

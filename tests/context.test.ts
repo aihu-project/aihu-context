@@ -11,6 +11,11 @@ import {
   runWithContext,
   setSsrContextMap,
 } from '@aihu/context'
+import {
+  clearSsrContextMap as clearSsrFromSubpath,
+  runWithContext as runWithContextFromSubpath,
+  setSsrContextMap as setSsrFromSubpath,
+} from '@aihu/context/ssr'
 import { describe, expect, it } from 'vitest'
 
 // ---------------------------------------------------------------------------
@@ -143,6 +148,24 @@ it('setSsrContextMap and clearSsrContextMap round-trip', () => {
 
   clearSsrContextMap()
   expect(inject(token)).toBe('default')
+})
+
+it('SSR subpath exports the live context-map implementation', () => {
+  const token = createContext<string>('default')
+  const map = new Map<symbol, unknown>()
+
+  setSsrFromSubpath(map)
+  provide(token, 'via-ssr-subpath')
+  expect(inject(token)).toBe('via-ssr-subpath')
+  clearSsrFromSubpath()
+  expect(inject(token)).toBe('default')
+
+  expect(
+    runWithContextFromSubpath(new Map(), () => {
+      provide(token, 'via-runWithContext-subpath')
+      return inject(token)
+    }),
+  ).toBe('via-runWithContext-subpath')
 })
 
 // ---------------------------------------------------------------------------

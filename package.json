@@ -23,29 +23,14 @@
   ],
   "sideEffects": false,
   "scripts": {
-    "build": "rolldown -c",
+    "build": "node scripts/build.mjs",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "lint": "biome lint .",
-    "check:lint": "biome ci .",
-    "check:package": "bun scripts/check-package-manifest.ts",
-    "check:release-version": "bun scripts/check-release-version.ts",
-    "check:ci": "bun run check:lint && bun run typecheck && bun run test && bun run build && bun run check:package && bun pm pack --dry-run",
-    "prepublishOnly": "bun run build"
-  },
-  "engines": {
-    "bun": ">=1.3.0",
-    "node": ">=20.18.0"
-  },
-  "packageManager": "bun@1.3.14",
-  "devDependencies": {
-    "@biomejs/biome": "2.4.14",
-    "@types/node": "^20.16.5",
-    "bun-types": "^1.3.0",
-    "rolldown": "^1.0.0-rc.17",
-    "rolldown-plugin-dts": "^0.23.2",
-    "typescript": "^5.6.2",
-    "vitest": "^3.2.6"
+    "lint": "biome ci .",
+    "check": "npm run lint && npm run typecheck && npm test",
+    "test:release-contract": "node scripts/release-contract-regression.mjs",
+    "release:contract": "node scripts/verify-pack.mjs",
+    "prepublishOnly": "npm run build"
   },
   "description": "Async-context-friendly request/SSR context primitives for aihu.",
   "repository": {
@@ -56,5 +41,12 @@
   "bugs": "https://github.com/aihu-project/aihu-context/issues",
   "publishConfig": {
     "access": "public"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.4.14",
+    "rolldown": "^1.0.0-rc.17",
+    "rolldown-plugin-dts": "^0.23.2",
+    "typescript": "^5.6.2",
+    "vitest": "^3.2.6"
   }
 }

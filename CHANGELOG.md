@@ -4,9 +4,8 @@
 
 ### Patch Changes
 
-- Moved the package into the standalone `aihu-project/aihu-context` repository
-  while preserving its public API and package name.
-- Updated package metadata and release automation for the Aihu organization.
+- Restore the live SSR context-map implementation in the published `./ssr` entry point.
+- Add standalone package, tarball, and isolated-consumer release gates.
 
 ## 0.2.0
 

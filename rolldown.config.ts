@@ -15,6 +15,7 @@ export default defineConfig([
   },
   {
     input: 'src/ssr.ts',
+    external: ['./index.js'],
     checks: { circularDependency: true },
     output: {
       dir: 'dist',

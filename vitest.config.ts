@@ -1,16 +1,14 @@
-import { fileURLToPath } from 'node:url'
+import { resolve } from 'node:path'
 import { defineConfig } from 'vitest/config'
 
 export default defineConfig({
   resolve: {
-    alias: {
-      '@aihu/context': fileURLToPath(new URL('./src/index.ts', import.meta.url)),
-      '@aihu/context/ssr': fileURLToPath(new URL('./src/ssr.ts', import.meta.url)),
-    },
+    alias: [
+      { find: /^@aihu\/context\/ssr$/, replacement: resolve(__dirname, 'src/ssr.ts') },
+      { find: /^@aihu\/context$/, replacement: resolve(__dirname, 'src/index.ts') },
+    ],
   },
   test: {
     include: ['tests/**/*.test.ts'],
-    environment: 'node',
-    passWithNoTests: false,
   },
 })
