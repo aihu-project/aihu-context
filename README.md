@@ -7,7 +7,7 @@ Async-context-friendly request/SSR context primitives for aihu.
 Part of the **runtime core** layer of the Aihu meta-framework. It is DOM-free and has no runtime dependencies, so it can be used by both browser and server code.
 
 <!-- BEGIN_HANDWRITTEN: prose -->
-The package exposes typed context tokens, hierarchical client scopes, and an explicit flat map for server rendering. The `./ssr` subpath is a live re-export of the same implementation, so server consumers can depend on the narrow entry point without losing behavior.
+The package exposes typed context tokens, hierarchical client scopes, and an explicit flat map for server rendering. The `./ssr` subpath is a narrow re-export covering only the flat SSR context-map API (`setSsrContextMap`, `clearSsrContextMap`, `runWithContext`); it does not re-export `createContext`, `provide`, `inject`, or `contextKey` — import from the package root for those.
 <!-- END_HANDWRITTEN: prose -->
 
 ## Install
